@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'marvel_api_response.g.dart';
@@ -25,3 +26,15 @@ class MarvelApiResponse<T> {
   @JsonKey(name: 'data')
   final T data;
 }
+
+@visibleForTesting
+MarvelApiResponse<T> createMarvelApiResponse<T>({
+  required int code,
+  required String status,
+  required T data,
+}) =>
+    MarvelApiResponse<T>._(
+      code: code,
+      status: status,
+      data: data,
+    );

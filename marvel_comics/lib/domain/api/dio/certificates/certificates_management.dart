@@ -1,11 +1,8 @@
 import 'dart:io';
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:marvel_comics/domain/api/dio/certificates/marvel_api_certificate.dart';
 
-Future<void> trustMarvelApiCertificate() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final data = await rootBundle.load('assets/raw/certificate.pem');
+void trustMarvelApiCertificate() {
   SecurityContext.defaultContext
-      .setTrustedCertificatesBytes(data.buffer.asUint8List());
+      .setTrustedCertificatesBytes(marvelApiCertificate);
 }

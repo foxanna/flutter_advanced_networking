@@ -12,5 +12,7 @@ class DioFactory {
         receiveTimeout: 15000,
         sendTimeout: 15000,
         connectTimeout: 5000,
+        queryParameters: <String, dynamic>{'parameter1': 'value1'},
+        headers: <String, dynamic>{'header1': 'value1'},
       );
 }

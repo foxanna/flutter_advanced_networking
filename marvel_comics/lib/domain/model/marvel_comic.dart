@@ -12,7 +12,9 @@ class MarvelComic with _$MarvelComic {
     @JsonKey(name: 'digitalId') int? digitalId,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'modified') DateTime? modified,
-    @JsonKey(name: 'format') MarvelComicFormat? format,
+    @JsonKey(name: 'format', unknownEnumValue: MarvelComicFormat.unknown)
+    @Default(MarvelComicFormat.unknown)
+        MarvelComicFormat format,
     @JsonKey(name: 'thumbnail') MarvelImage? thumbnail,
     @JsonKey(name: 'images') @Default(<MarvelImage>[]) List<MarvelImage> images,
   }) = _MarvelComic;

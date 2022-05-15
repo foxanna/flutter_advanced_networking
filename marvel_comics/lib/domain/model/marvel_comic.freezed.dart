@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+MarvelComic _$MarvelComicFromJson(Map<String, dynamic> json) {
+  return _MarvelComic.fromJson(json);
+}
+
 /// @nodoc
 mixin _$MarvelComic {
   int get id => throw _privateConstructorUsedError;
@@ -23,6 +27,7 @@ mixin _$MarvelComic {
   MarvelComicFormat? get format => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $MarvelComicCopyWith<MarvelComic> get copyWith =>
       throw _privateConstructorUsedError;
@@ -153,7 +158,7 @@ class __$$_MarvelComicCopyWithImpl<$Res> extends _$MarvelComicCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_MarvelComic implements _MarvelComic {
   const _$_MarvelComic(
       {required this.id,
@@ -163,6 +168,9 @@ class _$_MarvelComic implements _MarvelComic {
       this.format,
       final List<String> images = const <String>[]})
       : _images = images;
+
+  factory _$_MarvelComic.fromJson(Map<String, dynamic> json) =>
+      _$$_MarvelComicFromJson(json);
 
   @override
   final int id;
@@ -200,6 +208,7 @@ class _$_MarvelComic implements _MarvelComic {
             const DeepCollectionEquality().equals(other._images, _images));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -214,6 +223,11 @@ class _$_MarvelComic implements _MarvelComic {
   @override
   _$$_MarvelComicCopyWith<_$_MarvelComic> get copyWith =>
       __$$_MarvelComicCopyWithImpl<_$_MarvelComic>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MarvelComicToJson(this);
+  }
 }
 
 abstract class _MarvelComic implements MarvelComic {
@@ -224,6 +238,9 @@ abstract class _MarvelComic implements MarvelComic {
       final DateTime? modified,
       final MarvelComicFormat? format,
       final List<String> images}) = _$_MarvelComic;
+
+  factory _MarvelComic.fromJson(Map<String, dynamic> json) =
+      _$_MarvelComic.fromJson;
 
   @override
   int get id;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marvel_comics/domain/marvel_api_example.dart';
 
 void main() {
   runApp(const MarvelComicsApp());
@@ -33,5 +34,13 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  void _execute() {}
+  void _execute() async {
+    try {
+      debugPrint('Loading...');
+      final comics = await getComics();
+      debugPrint('Loaded ${comics.count} comics');
+    } on Exception catch (e) {
+      debugPrint('Loading failed with ${e.runtimeType}');
+    }
+  }
 }

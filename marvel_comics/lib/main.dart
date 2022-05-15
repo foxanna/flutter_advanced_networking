@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:marvel_comics/domain/api/dio/certificates/certificates_management.dart';
 import 'package:marvel_comics/domain/marvel_api_example.dart';
 
 void main() {
+  trustMarvelApiCertificate();
   runApp(const MarvelComicsApp());
 }
 

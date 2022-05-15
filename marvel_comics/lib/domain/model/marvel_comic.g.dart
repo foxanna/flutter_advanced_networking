@@ -45,12 +45,13 @@ Map<String, dynamic> _$$_MarvelComicToJson(_$_MarvelComic instance) {
 }
 
 const _$MarvelComicFormatEnumMap = {
-  MarvelComicFormat.comic: 'comic',
-  MarvelComicFormat.magazine: 'magazine',
-  MarvelComicFormat.tradePaperback: 'tradePaperback',
-  MarvelComicFormat.hardCover: 'hardCover',
-  MarvelComicFormat.digest: 'digest',
-  MarvelComicFormat.graphicNovel: 'graphicNovel',
-  MarvelComicFormat.digitalComic: 'digitalComic',
-  MarvelComicFormat.infiniteComic: 'infiniteComic',
+  MarvelComicFormat.unknown: 'unknown',
+  MarvelComicFormat.comic: 'Comic',
+  MarvelComicFormat.magazine: 'Magazine',
+  MarvelComicFormat.tradePaperback: 'Trade Paperback',
+  MarvelComicFormat.hardCover: 'Hardcover',
+  MarvelComicFormat.digest: 'Digest',
+  MarvelComicFormat.graphicNovel: 'Graphic Novel',
+  MarvelComicFormat.digitalComic: 'Digital Comic',
+  MarvelComicFormat.infiniteComic: 'Infinite Comic',
 };

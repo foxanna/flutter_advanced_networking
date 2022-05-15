@@ -9,7 +9,8 @@ part of 'marvel_comic.dart';
 _$_MarvelComic _$$_MarvelComicFromJson(Map<String, dynamic> json) =>
     _$_MarvelComic(
       id: const IntToStringConverter().fromJson(json['id'] as int),
-      digitalId: json['digitalId'] as int?,
+      digitalId: const NullableIntToNullableStringConverter()
+          .fromJson(json['digitalId'] as int?),
       title: json['title'] as String?,
       modified: json['modified'] == null
           ? null
@@ -36,7 +37,8 @@ Map<String, dynamic> _$$_MarvelComicToJson(_$_MarvelComic instance) {
   }
 
   writeNotNull('id', const IntToStringConverter().toJson(instance.id));
-  writeNotNull('digitalId', instance.digitalId);
+  writeNotNull('digitalId',
+      const NullableIntToNullableStringConverter().toJson(instance.digitalId));
   writeNotNull('title', instance.title);
   writeNotNull('modified', instance.modified?.toIso8601String());
   val['format'] = _$MarvelComicFormatEnumMap[instance.format]!;

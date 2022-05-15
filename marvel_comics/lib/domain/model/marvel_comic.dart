@@ -10,7 +10,9 @@ part 'marvel_comic.g.dart';
 class MarvelComic with _$MarvelComic {
   const factory MarvelComic({
     @JsonKey(name: 'id') @IntToStringConverter() required String id,
-    @JsonKey(name: 'digitalId') int? digitalId,
+    @JsonKey(name: 'digitalId')
+    @NullableIntToNullableStringConverter()
+        String? digitalId,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'modified') DateTime? modified,
     @JsonKey(name: 'format', unknownEnumValue: MarvelComicFormat.unknown)

@@ -4,14 +4,16 @@ import 'package:marvel_comics/domain/api/dio/interceptors/marvel_api_auth_interc
 import 'package:marvel_comics/domain/api/marvel_api_consts.dart';
 import 'package:marvel_comics/domain/api/marvel_comics_api.dart';
 import 'package:marvel_comics/domain/api/service/marvel_api_key_service.dart';
+import 'package:marvel_comics/domain/data/marvel_comics_repository.dart';
 import 'package:marvel_comics/domain/model/marvel_comic.dart';
 import 'package:marvel_comics/domain/model/marvel_paginated_list.dart';
 
 Future<MarvelPaginatedList<MarvelComic>> getComics() async {
   final dio = _createDio();
   final comicsApi = MarvelComicsApi(dio);
-  final comicsResponse = await comicsApi.getComics();
-  return comicsResponse.data;
+  final comicsRepository = MarvelComicsRepository(comicsApi);
+  final comics = await comicsRepository.getComics();
+  return comics;
 }
 
 Dio _createDio() {

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marvel_comics/domain/model/marvel_comic_format.dart';
+import 'package:marvel_comics/domain/model/marvel_image.dart';
 
 part 'marvel_comic.freezed.dart';
 part 'marvel_comic.g.dart';
@@ -12,7 +13,8 @@ class MarvelComic with _$MarvelComic {
     String? title,
     DateTime? modified,
     MarvelComicFormat? format,
-    @Default(<String>[]) List<String> images,
+    MarvelImage? thumbnail,
+    @Default(<MarvelImage>[]) List<MarvelImage> images,
   }) = _MarvelComic;
 
   factory MarvelComic.fromJson(Map<String, dynamic> json) =>

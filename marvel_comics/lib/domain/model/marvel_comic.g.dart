@@ -15,10 +15,13 @@ _$_MarvelComic _$$_MarvelComicFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['modified'] as String),
       format: $enumDecodeNullable(_$MarvelComicFormatEnumMap, json['format']),
+      thumbnail: json['thumbnail'] == null
+          ? null
+          : MarvelImage.fromJson(json['thumbnail'] as Map<String, dynamic>),
       images: (json['images'] as List<dynamic>?)
-              ?.map((e) => e as String)
+              ?.map((e) => MarvelImage.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const <String>[],
+          const <MarvelImage>[],
     );
 
 Map<String, dynamic> _$$_MarvelComicToJson(_$_MarvelComic instance) =>
@@ -28,6 +31,7 @@ Map<String, dynamic> _$$_MarvelComicToJson(_$_MarvelComic instance) =>
       'title': instance.title,
       'modified': instance.modified?.toIso8601String(),
       'format': _$MarvelComicFormatEnumMap[instance.format],
+      'thumbnail': instance.thumbnail,
       'images': instance.images,
     };
 

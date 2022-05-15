@@ -25,7 +25,8 @@ mixin _$MarvelComic {
   String? get title => throw _privateConstructorUsedError;
   DateTime? get modified => throw _privateConstructorUsedError;
   MarvelComicFormat? get format => throw _privateConstructorUsedError;
-  List<String> get images => throw _privateConstructorUsedError;
+  MarvelImage? get thumbnail => throw _privateConstructorUsedError;
+  List<MarvelImage> get images => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +45,10 @@ abstract class $MarvelComicCopyWith<$Res> {
       String? title,
       DateTime? modified,
       MarvelComicFormat? format,
-      List<String> images});
+      MarvelImage? thumbnail,
+      List<MarvelImage> images});
+
+  $MarvelImageCopyWith<$Res>? get thumbnail;
 }
 
 /// @nodoc
@@ -62,6 +66,7 @@ class _$MarvelComicCopyWithImpl<$Res> implements $MarvelComicCopyWith<$Res> {
     Object? title = freezed,
     Object? modified = freezed,
     Object? format = freezed,
+    Object? thumbnail = freezed,
     Object? images = freezed,
   }) {
     return _then(_value.copyWith(
@@ -85,11 +90,26 @@ class _$MarvelComicCopyWithImpl<$Res> implements $MarvelComicCopyWith<$Res> {
           ? _value.format
           : format // ignore: cast_nullable_to_non_nullable
               as MarvelComicFormat?,
+      thumbnail: thumbnail == freezed
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as MarvelImage?,
       images: images == freezed
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<MarvelImage>,
     ));
+  }
+
+  @override
+  $MarvelImageCopyWith<$Res>? get thumbnail {
+    if (_value.thumbnail == null) {
+      return null;
+    }
+
+    return $MarvelImageCopyWith<$Res>(_value.thumbnail!, (value) {
+      return _then(_value.copyWith(thumbnail: value));
+    });
   }
 }
 
@@ -106,7 +126,11 @@ abstract class _$$_MarvelComicCopyWith<$Res>
       String? title,
       DateTime? modified,
       MarvelComicFormat? format,
-      List<String> images});
+      MarvelImage? thumbnail,
+      List<MarvelImage> images});
+
+  @override
+  $MarvelImageCopyWith<$Res>? get thumbnail;
 }
 
 /// @nodoc
@@ -126,6 +150,7 @@ class __$$_MarvelComicCopyWithImpl<$Res> extends _$MarvelComicCopyWithImpl<$Res>
     Object? title = freezed,
     Object? modified = freezed,
     Object? format = freezed,
+    Object? thumbnail = freezed,
     Object? images = freezed,
   }) {
     return _then(_$_MarvelComic(
@@ -149,10 +174,14 @@ class __$$_MarvelComicCopyWithImpl<$Res> extends _$MarvelComicCopyWithImpl<$Res>
           ? _value.format
           : format // ignore: cast_nullable_to_non_nullable
               as MarvelComicFormat?,
+      thumbnail: thumbnail == freezed
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as MarvelImage?,
       images: images == freezed
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<MarvelImage>,
     ));
   }
 }
@@ -166,7 +195,8 @@ class _$_MarvelComic implements _MarvelComic {
       this.title,
       this.modified,
       this.format,
-      final List<String> images = const <String>[]})
+      this.thumbnail,
+      final List<MarvelImage> images = const <MarvelImage>[]})
       : _images = images;
 
   factory _$_MarvelComic.fromJson(Map<String, dynamic> json) =>
@@ -182,17 +212,19 @@ class _$_MarvelComic implements _MarvelComic {
   final DateTime? modified;
   @override
   final MarvelComicFormat? format;
-  final List<String> _images;
+  @override
+  final MarvelImage? thumbnail;
+  final List<MarvelImage> _images;
   @override
   @JsonKey()
-  List<String> get images {
+  List<MarvelImage> get images {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_images);
   }
 
   @override
   String toString() {
-    return 'MarvelComic(id: $id, digitalId: $digitalId, title: $title, modified: $modified, format: $format, images: $images)';
+    return 'MarvelComic(id: $id, digitalId: $digitalId, title: $title, modified: $modified, format: $format, thumbnail: $thumbnail, images: $images)';
   }
 
   @override
@@ -205,6 +237,7 @@ class _$_MarvelComic implements _MarvelComic {
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.modified, modified) &&
             const DeepCollectionEquality().equals(other.format, format) &&
+            const DeepCollectionEquality().equals(other.thumbnail, thumbnail) &&
             const DeepCollectionEquality().equals(other._images, _images));
   }
 
@@ -217,6 +250,7 @@ class _$_MarvelComic implements _MarvelComic {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(modified),
       const DeepCollectionEquality().hash(format),
+      const DeepCollectionEquality().hash(thumbnail),
       const DeepCollectionEquality().hash(_images));
 
   @JsonKey(ignore: true)
@@ -226,7 +260,9 @@ class _$_MarvelComic implements _MarvelComic {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MarvelComicToJson(this);
+    return _$$_MarvelComicToJson(
+      this,
+    );
   }
 }
 
@@ -237,7 +273,8 @@ abstract class _MarvelComic implements MarvelComic {
       final String? title,
       final DateTime? modified,
       final MarvelComicFormat? format,
-      final List<String> images}) = _$_MarvelComic;
+      final MarvelImage? thumbnail,
+      final List<MarvelImage> images}) = _$_MarvelComic;
 
   factory _MarvelComic.fromJson(Map<String, dynamic> json) =
       _$_MarvelComic.fromJson;
@@ -253,7 +290,9 @@ abstract class _MarvelComic implements MarvelComic {
   @override
   MarvelComicFormat? get format;
   @override
-  List<String> get images;
+  MarvelImage? get thumbnail;
+  @override
+  List<MarvelImage> get images;
   @override
   @JsonKey(ignore: true)
   _$$_MarvelComicCopyWith<_$_MarvelComic> get copyWith =>

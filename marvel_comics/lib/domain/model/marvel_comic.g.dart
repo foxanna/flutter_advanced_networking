@@ -25,6 +25,9 @@ _$_MarvelComic _$$_MarvelComicFromJson(Map<String, dynamic> json) =>
               ?.map((e) => MarvelImage.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const <MarvelImage>[],
+      stories: json['stories'] == null
+          ? const MarvelStoryList()
+          : MarvelStoryList.fromJson(json['stories'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_MarvelComicToJson(_$_MarvelComic instance) {
@@ -44,6 +47,7 @@ Map<String, dynamic> _$$_MarvelComicToJson(_$_MarvelComic instance) {
   val['format'] = _$MarvelComicFormatEnumMap[instance.format]!;
   writeNotNull('thumbnail', instance.thumbnail?.toJson());
   val['images'] = instance.images.map((e) => e.toJson()).toList();
+  val['stories'] = instance.stories.toJson();
   return val;
 }
 

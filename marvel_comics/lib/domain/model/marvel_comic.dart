@@ -8,13 +8,13 @@ part 'marvel_comic.g.dart';
 @freezed
 class MarvelComic with _$MarvelComic {
   const factory MarvelComic({
-    required int id,
-    int? digitalId,
-    String? title,
-    DateTime? modified,
-    MarvelComicFormat? format,
-    MarvelImage? thumbnail,
-    @Default(<MarvelImage>[]) List<MarvelImage> images,
+    @JsonKey(name: 'id') required int id,
+    @JsonKey(name: 'digitalId') int? digitalId,
+    @JsonKey(name: 'title') String? title,
+    @JsonKey(name: 'modified') DateTime? modified,
+    @JsonKey(name: 'format') MarvelComicFormat? format,
+    @JsonKey(name: 'thumbnail') MarvelImage? thumbnail,
+    @JsonKey(name: 'images') @Default(<MarvelImage>[]) List<MarvelImage> images,
   }) = _MarvelComic;
 
   factory MarvelComic.fromJson(Map<String, dynamic> json) =>

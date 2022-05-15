@@ -6,8 +6,8 @@ part 'marvel_image.g.dart';
 @freezed
 class MarvelImage with _$MarvelImage {
   const factory MarvelImage({
-    required String path,
-    required String extension,
+    @JsonKey(name: 'path') required String path,
+    @JsonKey(name: 'extension') required String extension,
   }) = _MarvelImage;
 
   factory MarvelImage.fromJson(Map<String, dynamic> json) =>

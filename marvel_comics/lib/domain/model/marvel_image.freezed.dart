@@ -20,7 +20,9 @@ MarvelImage _$MarvelImageFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MarvelImage {
+  @JsonKey(name: 'path')
   String get path => throw _privateConstructorUsedError;
+  @JsonKey(name: 'extension')
   String get extension => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +36,9 @@ abstract class $MarvelImageCopyWith<$Res> {
   factory $MarvelImageCopyWith(
           MarvelImage value, $Res Function(MarvelImage) then) =
       _$MarvelImageCopyWithImpl<$Res>;
-  $Res call({String path, String extension});
+  $Res call(
+      {@JsonKey(name: 'path') String path,
+      @JsonKey(name: 'extension') String extension});
 }
 
 /// @nodoc
@@ -70,7 +74,9 @@ abstract class _$$_MarvelImageCopyWith<$Res>
           _$_MarvelImage value, $Res Function(_$_MarvelImage) then) =
       __$$_MarvelImageCopyWithImpl<$Res>;
   @override
-  $Res call({String path, String extension});
+  $Res call(
+      {@JsonKey(name: 'path') String path,
+      @JsonKey(name: 'extension') String extension});
 }
 
 /// @nodoc
@@ -104,14 +110,18 @@ class __$$_MarvelImageCopyWithImpl<$Res> extends _$MarvelImageCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_MarvelImage implements _MarvelImage {
-  const _$_MarvelImage({required this.path, required this.extension});
+  const _$_MarvelImage(
+      {@JsonKey(name: 'path') required this.path,
+      @JsonKey(name: 'extension') required this.extension});
 
   factory _$_MarvelImage.fromJson(Map<String, dynamic> json) =>
       _$$_MarvelImageFromJson(json);
 
   @override
+  @JsonKey(name: 'path')
   final String path;
   @override
+  @JsonKey(name: 'extension')
   final String extension;
 
   @override
@@ -150,15 +160,18 @@ class _$_MarvelImage implements _MarvelImage {
 
 abstract class _MarvelImage implements MarvelImage {
   const factory _MarvelImage(
-      {required final String path,
-      required final String extension}) = _$_MarvelImage;
+          {@JsonKey(name: 'path') required final String path,
+          @JsonKey(name: 'extension') required final String extension}) =
+      _$_MarvelImage;
 
   factory _MarvelImage.fromJson(Map<String, dynamic> json) =
       _$_MarvelImage.fromJson;
 
   @override
+  @JsonKey(name: 'path')
   String get path;
   @override
+  @JsonKey(name: 'extension')
   String get extension;
   @override
   @JsonKey(ignore: true)

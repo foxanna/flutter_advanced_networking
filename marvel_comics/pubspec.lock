@@ -326,6 +326,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.0"
+  native_flutter_proxy:
+    dependency: "direct main"
+    description:
+      name: native_flutter_proxy
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.15"
   node_preamble:
     dependency: transitive
     description:

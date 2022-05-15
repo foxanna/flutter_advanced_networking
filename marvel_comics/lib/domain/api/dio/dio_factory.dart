@@ -1,11 +1,17 @@
 import 'package:dio/dio.dart';
+import 'package:marvel_comics/domain/api/dio/interceptors/append_timestamp_interceptor.dart';
 
 class DioFactory {
-  const DioFactory(this._baseUrl);
+  const DioFactory(
+    this._baseUrl,
+    this._appendTimestampInterceptor,
+  );
 
   final String _baseUrl;
+  final AppendTimestampInterceptor _appendTimestampInterceptor;
 
-  Dio create() => Dio(_createBaseOptions());
+  Dio create() =>
+      Dio(_createBaseOptions())..interceptors.add(_appendTimestampInterceptor);
 
   BaseOptions _createBaseOptions() => BaseOptions(
         baseUrl: _baseUrl,

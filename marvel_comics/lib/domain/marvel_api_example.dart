@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:marvel_comics/domain/api/dio/dio_factory.dart';
 import 'package:marvel_comics/domain/api/dio/interceptors/marvel_api_auth_interceptor.dart';
+import 'package:marvel_comics/domain/api/dio/interceptors/proxy_interceptor.dart';
+import 'package:marvel_comics/domain/api/dio/proxy/proxy_finder.dart';
+import 'package:marvel_comics/domain/api/dio/proxy/proxy_holder.dart';
 import 'package:marvel_comics/domain/api/marvel_api_consts.dart';
 import 'package:marvel_comics/domain/api/marvel_comics_api.dart';
 import 'package:marvel_comics/domain/api/service/marvel_api_key_service.dart';
@@ -21,9 +24,12 @@ Dio _createDio() {
     MarvelApiConsts.publicKey,
     const MarvelApiKeyService(),
   );
+  final proxyHolder = ProxyHolder();
   final dioFactory = DioFactory(
     MarvelApiConsts.baseUrl,
     apiAuthInterceptor,
+    ProxyInterceptor(proxyHolder),
+    ProxyFinder(proxyHolder),
   );
   return dioFactory.create();
 }

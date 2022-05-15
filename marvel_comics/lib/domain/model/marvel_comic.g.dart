@@ -28,6 +28,10 @@ _$_MarvelComic _$$_MarvelComicFromJson(Map<String, dynamic> json) =>
       stories: json['stories'] == null
           ? const MarvelStoryList()
           : MarvelStoryList.fromJson(json['stories'] as Map<String, dynamic>),
+      creators: json['creators'] == null
+          ? const MarvelCreatorList()
+          : MarvelCreatorList.fromJson(
+              json['creators'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_MarvelComicToJson(_$_MarvelComic instance) {
@@ -48,6 +52,7 @@ Map<String, dynamic> _$$_MarvelComicToJson(_$_MarvelComic instance) {
   writeNotNull('thumbnail', instance.thumbnail?.toJson());
   val['images'] = instance.images.map((e) => e.toJson()).toList();
   val['stories'] = instance.stories.toJson();
+  val['creators'] = instance.creators.toJson();
   return val;
 }
 

@@ -1,15 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:marvel_comics/domain/model/marvel_comic.dart';
+import 'package:retrofit/retrofit.dart';
 
-class ExampleApi {
-  const ExampleApi(this._dio);
+part 'example_api.g.dart';
 
-  final Dio _dio;
+@RestApi()
+abstract class ExampleApi {
+  factory ExampleApi(Dio dio) = _ExampleApi;
 
-  Future<MarvelComic> getExample() async {
-    final response = await _dio.get<Map<String, dynamic>>('/get_example');
-    final json = response.data!;
-    final example = MarvelComic.fromJson(json);
-    return example;
-  }
+  @GET('/get_example')
+  Future<MarvelComic> getExample();
 }

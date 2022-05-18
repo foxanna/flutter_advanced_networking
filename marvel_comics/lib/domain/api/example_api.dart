@@ -9,13 +9,15 @@ const popularHeaders = Headers({
   'header2-name': 'value2',
 });
 
+const popularHeader = Header('header-name');
+
 @RestApi(baseUrl: 'https://example.com')
 abstract class ExampleApi {
   factory ExampleApi(Dio dio) = _ExampleApi;
 
   @GET('/get_example')
   Future<MarvelComic> getExample(
-    @Header('header-name') String headerValue,
+    @popularHeader String headerValue,
   );
 
   @popularHeaders
@@ -23,7 +25,7 @@ abstract class ExampleApi {
   Future<String> postExample(
     @Path() String id,
     @Body() Map<String, dynamic> map,
-    @Header('header-name') String headerValue,
+    @popularHeader String headerValue,
   );
 
   @popularHeaders

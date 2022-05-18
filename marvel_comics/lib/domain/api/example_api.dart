@@ -14,13 +14,16 @@ abstract class ExampleApi {
   factory ExampleApi(Dio dio) = _ExampleApi;
 
   @GET('/get_example')
-  Future<MarvelComic> getExample();
+  Future<MarvelComic> getExample(
+    @Header('header-name') String headerValue,
+  );
 
   @popularHeaders
   @POST('/post_example/{id}')
   Future<String> postExample(
     @Path() String id,
     @Body() Map<String, dynamic> map,
+    @Header('header-name') String headerValue,
   );
 
   @popularHeaders

@@ -16,4 +16,11 @@ abstract class ExampleApi {
     @Path() String id,
     @Body() Map<String, dynamic> map,
   );
+
+  @PUT('/put_example/{id}')
+  Future<Map<String, dynamic>> putExample(
+    @Path() String id,
+    @Query('apikey') String apiKey,
+    @Body() MarvelComic body,
+  );
 }

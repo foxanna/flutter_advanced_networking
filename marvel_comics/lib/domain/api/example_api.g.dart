@@ -49,6 +49,24 @@ class _ExampleApi implements ExampleApi {
     return value;
   }
 
+  @override
+  Future<Map<String, dynamic>> putExample(id, apiKey, body) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'apikey': apiKey};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<Map<String, dynamic>>(
+            Options(method: 'PUT', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/put_example/${id}',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!.map((k, dynamic v) =>
+        MapEntry(k, dynamic.fromJson(v as Map<String, dynamic>)));
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

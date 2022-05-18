@@ -15,8 +15,14 @@ const popularHeader = Header('header-name');
 abstract class ExampleApi {
   factory ExampleApi(Dio dio) = _ExampleApi;
 
+  @Headers({
+    'header1-name': r'$header1Value',
+    'header2-name': r'$header2Value',
+  })
   @GET('/get_example')
   Future<MarvelComic> getExample(
+    String header1Value,
+    String header2Value,
     @popularHeader String headerValue,
   );
 

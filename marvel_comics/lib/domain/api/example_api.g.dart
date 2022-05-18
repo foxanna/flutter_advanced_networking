@@ -18,10 +18,15 @@ class _ExampleApi implements ExampleApi {
   String? baseUrl;
 
   @override
-  Future<MarvelComic> getExample(headerValue) async {
+  Future<MarvelComic> getExample(
+      header1Value, header2Value, headerValue) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'header-name': headerValue};
+    final _headers = <String, dynamic>{
+      r'header1-name': '$header1Value',
+      r'header2-name': '$header2Value',
+      r'header-name': headerValue
+    };
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(

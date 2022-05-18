@@ -23,4 +23,7 @@ abstract class ExampleApi {
     @Query('apikey') String apiKey,
     @Body() MarvelComic body,
   );
+
+  @DELETE('/delete_example/{id}')
+  Future<void> deleteExample(@Path() String id);
 }

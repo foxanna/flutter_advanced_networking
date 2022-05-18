@@ -9,7 +9,9 @@ part of 'example_api.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
 class _ExampleApi implements ExampleApi {
-  _ExampleApi(this._dio, {this.baseUrl});
+  _ExampleApi(this._dio, {this.baseUrl}) {
+    baseUrl ??= 'https://example.com';
+  }
 
   final Dio _dio;
 
@@ -28,6 +30,22 @@ class _ExampleApi implements ExampleApi {
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = MarvelComic.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<String> postExample(id, map) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(map);
+    final _result = await _dio.fetch<String>(_setStreamType<String>(
+        Options(method: 'POST', headers: _headers, extra: _extra)
+            .compose(_dio.options, '/post_example/${id}',
+                queryParameters: queryParameters, data: _data)
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data!;
     return value;
   }
 

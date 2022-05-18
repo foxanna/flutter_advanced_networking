@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' hide Headers;
 import 'package:marvel_comics/domain/model/marvel_comic.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -11,12 +11,20 @@ abstract class ExampleApi {
   @GET('/get_example')
   Future<MarvelComic> getExample();
 
+  @Headers({
+    'header1-name': 'value1',
+    'header2-name': 'value2',
+  })
   @POST('/post_example/{id}')
   Future<String> postExample(
     @Path() String id,
     @Body() Map<String, dynamic> map,
   );
 
+  @Headers({
+    'header1-name': 'value1',
+    'header2-name': 'value2',
+  })
   @PUT('/put_example/{id}')
   Future<Map<String, dynamic>> putExample(
     @Path() String id,

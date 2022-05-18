@@ -37,7 +37,11 @@ class _ExampleApi implements ExampleApi {
   Future<String> postExample(id, map) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'header1-name': 'value1',
+      r'header2-name': 'value2'
+    };
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(map);
     final _result = await _dio.fetch<String>(_setStreamType<String>(
@@ -53,7 +57,11 @@ class _ExampleApi implements ExampleApi {
   Future<Map<String, dynamic>> putExample(id, apiKey, body) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'apikey': apiKey};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'header1-name': 'value1',
+      r'header2-name': 'value2'
+    };
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(

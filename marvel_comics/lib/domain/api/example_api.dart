@@ -11,14 +11,16 @@ const popularHeaders = Headers({
 
 const popularHeader = Header('header-name');
 
+const popularDynamicHeaders = Headers({
+  'header1-name': r'$header1Value',
+  'header2-name': r'$header2Value',
+});
+
 @RestApi(baseUrl: 'https://example.com')
 abstract class ExampleApi {
   factory ExampleApi(Dio dio) = _ExampleApi;
 
-  @Headers({
-    'header1-name': r'$header1Value',
-    'header2-name': r'$header2Value',
-  })
+  @popularDynamicHeaders
   @GET('/get_example')
   Future<MarvelComic> getExample(
     String header1Value,

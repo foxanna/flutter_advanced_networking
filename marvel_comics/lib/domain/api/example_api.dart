@@ -20,6 +20,10 @@ const popularDynamicHeaders = Headers({
 abstract class ExampleApi {
   factory ExampleApi(Dio dio) = _ExampleApi;
 
+  @Extra({'append-header': true})
+  @GET('/path')
+  Future<void> request();
+
   @popularDynamicHeaders
   @GET('/get_example')
   Future<MarvelComic> getExample(

@@ -24,6 +24,12 @@ class ExampleInterceptor extends Interceptor {
       options.headers['access-key'] = accessKey;
     }
 
+    final appendHeader = options.extra['append-header'] ?? false;
+    if (appendHeader) {
+      options.headers['header'] = 'header-value';
+    }
+    options.extra.remove('append-header');
+
     return super.onRequest(options, handler);
   }
 }

@@ -9,6 +9,8 @@ class ExampleInterceptor extends Interceptor {
   final String _apiKey;
   final AuthService _authService;
 
+  static const _exceptions = ['/login', '/forgot-password'];
+
   @override
   Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
@@ -17,8 +19,10 @@ class ExampleInterceptor extends Interceptor {
     final timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     options.headers['timestamp'] = timestamp;
 
-    final accessKey = await _authService.readAccessKey();
-    options.headers['access-key'] = accessKey;
+    if (!_exceptions.any(options.path.startsWith)) {
+      final accessKey = await _authService.readAccessKey();
+      options.headers['access-key'] = accessKey;
+    }
 
     return super.onRequest(options, handler);
   }

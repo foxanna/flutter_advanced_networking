@@ -21,9 +21,7 @@ abstract class HeadersExampleApi {
   @secureAction
   @requestCType
   @GET('/requestC')
-  Future<String> requestC({
-    @Header('security-header') String securityHeaderValue,
-  });
+  Future<String> requestC();
 
   @requestDType
   @GET('/requestD')

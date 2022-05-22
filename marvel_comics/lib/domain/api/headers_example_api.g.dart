@@ -16,18 +16,13 @@ class _HeadersExampleApi implements HeadersExampleApi {
   String? baseUrl;
 
   @override
-  Future<String> requestA(
-      {required headerValue1, required headerValue2}) async {
+  Future<String> requestA() async {
     const _extra = <String, dynamic>{
       'append-header1': true,
       'append-header2': true
     };
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{
-      r'header-name1': headerValue1,
-      r'header-name2': headerValue2
-    };
-    _headers.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<String>(_setStreamType<String>(
         Options(method: 'GET', headers: _headers, extra: _extra)
@@ -39,23 +34,14 @@ class _HeadersExampleApi implements HeadersExampleApi {
   }
 
   @override
-  Future<String> requestB(
-      {required headerValue2,
-      required headerValue3,
-      required headerValue5,
-      required parameter}) async {
+  Future<String> requestB({required parameter}) async {
     const _extra = <String, dynamic>{
       'append-header2': true,
       'append-header3': true,
       'append-header5': true
     };
     final queryParameters = <String, dynamic>{r'parameter': parameter};
-    final _headers = <String, dynamic>{
-      r'header-name2': headerValue2,
-      r'header-name3': headerValue3,
-      r'header-name5': headerValue5
-    };
-    _headers.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<String>(_setStreamType<String>(
         Options(method: 'GET', headers: _headers, extra: _extra)
@@ -67,12 +53,7 @@ class _HeadersExampleApi implements HeadersExampleApi {
   }
 
   @override
-  Future<String> requestC(
-      {required headerValue2,
-      required headerValue3,
-      required headerValue4,
-      required headerValue5,
-      required securityHeaderValue}) async {
+  Future<String> requestC({required securityHeaderValue}) async {
     const _extra = <String, dynamic>{
       'append-header2': true,
       'append-header3': true,
@@ -80,13 +61,7 @@ class _HeadersExampleApi implements HeadersExampleApi {
       'append-header5': true
     };
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{
-      r'header-name2': headerValue2,
-      r'header-name3': headerValue3,
-      r'header-name4': headerValue4,
-      r'header-name5': headerValue5,
-      r'security-header': securityHeaderValue
-    };
+    final _headers = <String, dynamic>{r'security-header': securityHeaderValue};
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<String>(_setStreamType<String>(
@@ -99,18 +74,13 @@ class _HeadersExampleApi implements HeadersExampleApi {
   }
 
   @override
-  Future<String> requestD(
-      {required headerValue2, required headerValue4, required data}) async {
+  Future<String> requestD({required data}) async {
     const _extra = <String, dynamic>{
       'append-header2': true,
       'append-header4': true
     };
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{
-      r'header-name2': headerValue2,
-      r'header-name4': headerValue4
-    };
-    _headers.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(data);
     final _result = await _dio.fetch<String>(_setStreamType<String>(

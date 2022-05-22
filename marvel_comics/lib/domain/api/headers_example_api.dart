@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:marvel_comics/domain/api/request_annotations.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'headers_example_api.g.dart';
@@ -13,12 +14,14 @@ const popularHeader5 = Header('header-name5');
 abstract class HeadersExampleApi {
   factory HeadersExampleApi(Dio dio) = _HeadersExampleApi;
 
+  @requestAType
   @GET('/requestA')
   Future<String> requestA({
     @popularHeader1 String headerValue1,
     @popularHeader2 String headerValue2,
   });
 
+  @requestBType
   @GET('/requestB')
   Future<String> requestB({
     @popularHeader2 String headerValue2,
@@ -27,6 +30,7 @@ abstract class HeadersExampleApi {
     @Query('parameter') String parameter,
   });
 
+  @requestCType
   @GET('/requestC')
   Future<String> requestC({
     @popularHeader2 String headerValue2,
@@ -36,6 +40,7 @@ abstract class HeadersExampleApi {
     @Header('security-header') String securityHeaderValue,
   });
 
+  @requestDType
   @GET('/requestD')
   Future<String> requestD({
     @popularHeader2 String headerValue2,

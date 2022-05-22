@@ -18,7 +18,10 @@ class _HeadersExampleApi implements HeadersExampleApi {
   @override
   Future<String> requestA(
       {required headerValue1, required headerValue2}) async {
-    const _extra = <String, dynamic>{};
+    const _extra = <String, dynamic>{
+      'append-header1': true,
+      'append-header2': true
+    };
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
       r'header-name1': headerValue1,
@@ -41,7 +44,11 @@ class _HeadersExampleApi implements HeadersExampleApi {
       required headerValue3,
       required headerValue5,
       required parameter}) async {
-    const _extra = <String, dynamic>{};
+    const _extra = <String, dynamic>{
+      'append-header2': true,
+      'append-header3': true,
+      'append-header5': true
+    };
     final queryParameters = <String, dynamic>{r'parameter': parameter};
     final _headers = <String, dynamic>{
       r'header-name2': headerValue2,
@@ -66,7 +73,12 @@ class _HeadersExampleApi implements HeadersExampleApi {
       required headerValue4,
       required headerValue5,
       required securityHeaderValue}) async {
-    const _extra = <String, dynamic>{};
+    const _extra = <String, dynamic>{
+      'append-header2': true,
+      'append-header3': true,
+      'append-header4': true,
+      'append-header5': true
+    };
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
       r'header-name2': headerValue2,
@@ -89,7 +101,10 @@ class _HeadersExampleApi implements HeadersExampleApi {
   @override
   Future<String> requestD(
       {required headerValue2, required headerValue4, required data}) async {
-    const _extra = <String, dynamic>{};
+    const _extra = <String, dynamic>{
+      'append-header2': true,
+      'append-header4': true
+    };
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
       r'header-name2': headerValue2,

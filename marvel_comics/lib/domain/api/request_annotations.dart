@@ -5,6 +5,7 @@ const appendHeader2 = 'append-header2';
 const appendHeader3 = 'append-header3';
 const appendHeader4 = 'append-header4';
 const appendHeader5 = 'append-header5';
+const secureActionHeader = 'secure-action';
 
 const requestAType = Extra(<String, Object>{
   appendHeader1: true,
@@ -27,4 +28,8 @@ const requestCType = Extra(<String, Object>{
 const requestDType = Extra(<String, Object>{
   appendHeader2: true,
   appendHeader4: true,
+});
+
+const secureAction = Headers(<String, dynamic>{
+  secureActionHeader: '',
 });

@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:marvel_comics/domain/api/dio/interceptors/append_headers_interceptor.dart';
 import 'package:marvel_comics/domain/api/dio/interceptors/marvel_api_auth_interceptor.dart';
 import 'package:marvel_comics/domain/api/dio/interceptors/proxy_interceptor.dart';
+import 'package:marvel_comics/domain/api/dio/interceptors/secure_action_interceptor.dart';
 import 'package:marvel_comics/domain/api/dio/proxy/proxy_finder.dart';
 
 class DioFactory {
@@ -10,6 +11,7 @@ class DioFactory {
     this._baseUrl,
     this._apiAuthInterceptor,
     this._headersInterceptor,
+    this._secureActionInterceptor,
     this._proxyInterceptor,
     this._proxyFinder,
   );
@@ -19,12 +21,14 @@ class DioFactory {
   final ProxyInterceptor _proxyInterceptor;
   final ProxyFinder _proxyFinder;
   final AppendHeadersInterceptor _headersInterceptor;
+  final SecureActionInterceptor _secureActionInterceptor;
 
   Dio create() => Dio(_createBaseOptions())
     ..interceptors.addAll([
       _apiAuthInterceptor,
       _proxyInterceptor,
       _headersInterceptor,
+      _secureActionInterceptor,
     ])
     ..httpClientAdapter = _createAdapter();
 

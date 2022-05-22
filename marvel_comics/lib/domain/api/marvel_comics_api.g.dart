@@ -18,7 +18,10 @@ class _MarvelComicsApi implements MarvelComicsApi {
   @override
   Future<MarvelApiResponse<MarvelPaginatedList<MarvelComic>>>
       getComics() async {
-    const _extra = <String, dynamic>{};
+    const _extra = <String, dynamic>{
+      'append-header1': true,
+      'append-header2': true
+    };
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};

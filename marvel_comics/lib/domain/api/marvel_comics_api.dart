@@ -11,6 +11,7 @@ part 'marvel_comics_api.g.dart';
 abstract class MarvelComicsApi {
   factory MarvelComicsApi(Dio dio) = _MarvelComicsApi;
 
+  @secureAction
   @requestAType
   @GET('/comics')
   Future<MarvelApiResponse<MarvelPaginatedList<MarvelComic>>> getComics();

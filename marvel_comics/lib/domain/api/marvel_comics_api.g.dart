@@ -23,7 +23,8 @@ class _MarvelComicsApi implements MarvelComicsApi {
       'append-header2': true
     };
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'secure-action': ''};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<MarvelApiResponse<MarvelPaginatedList<MarvelComic>>>(

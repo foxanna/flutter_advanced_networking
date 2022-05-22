@@ -19,7 +19,10 @@ class _ExampleApi implements ExampleApi {
 
   @override
   Future<void> request() async {
-    const _extra = <String, dynamic>{'append-header': true};
+    const _extra = <String, dynamic>{
+      'append-header': true,
+      'append-header-duplicate': true
+    };
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};

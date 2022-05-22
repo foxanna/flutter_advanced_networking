@@ -21,6 +21,7 @@ abstract class ExampleApi {
   factory ExampleApi(Dio dio) = _ExampleApi;
 
   @Extra({'append-header': true})
+  @Extra({'append-header-duplicate': true})
   @GET('/path')
   Future<void> request();
 

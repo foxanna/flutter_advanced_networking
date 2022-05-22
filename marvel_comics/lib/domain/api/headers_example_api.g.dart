@@ -61,7 +61,10 @@ class _HeadersExampleApi implements HeadersExampleApi {
       'append-header5': true
     };
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'security-header': securityHeaderValue};
+    final _headers = <String, dynamic>{
+      r'secure-action': '',
+      r'security-header': securityHeaderValue
+    };
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<String>(_setStreamType<String>(

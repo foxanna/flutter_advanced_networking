@@ -18,6 +18,7 @@ abstract class HeadersExampleApi {
     @Query('parameter') String parameter,
   });
 
+  @secureAction
   @requestCType
   @GET('/requestC')
   Future<String> requestC({
